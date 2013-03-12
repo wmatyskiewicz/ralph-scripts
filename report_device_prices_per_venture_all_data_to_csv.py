@@ -21,7 +21,7 @@ from email import Encoders
 
 def devices_as_csv():
     data = []
-    all_devices = Device.objects.exclude(sn__isnull=True).exclude(sn__exact='')[0:10]
+    all_devices = Device.objects.exclude(sn__isnull=True).exclude(sn__exact='')
     for device in all_devices:
         data.append(
             ReportDevicePricesPerVenture().device_details(
