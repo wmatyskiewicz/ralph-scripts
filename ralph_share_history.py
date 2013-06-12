@@ -5,12 +5,14 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
-import datetime
-
+import datetime, os
 
 from ralph.util import plugin, api_pricing
 from ralph_pricing.plugins import shares
 from ralph_pricing.models import Device
+
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ralph.settings")
 
 
 def update_history_share():
@@ -28,3 +30,6 @@ def update_history_share():
                 value=share['size'],
             )
             date -= datetime.timedelta(days=1)
+
+
+update_history_share()
